@@ -1,0 +1,7 @@
+{
+  "name": "Fire Protection Hungary",
+  "country": ["HU"],
+  "domains": ["fire_protection_hu"],
+  "render_readme": "true",
+  "iot_class": ["Assumed State", "Cloud Polling"]
+}
