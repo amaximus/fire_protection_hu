@@ -88,7 +88,7 @@ class FireProtectionHUSensor(Entity):
         _LOGGER.debug("county_id: " + self._county_id)
 
         self._state = self._fdata[int(self._county_id)]
-        if int(self._state) > 0:
+        if self._state is not None and int(self._state) > 0:
           self._icon = "mdi:fire-alert"
         else:
           self._icon = "mdi:fire"
