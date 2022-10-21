@@ -43,11 +43,11 @@ def async_setup_platform(hass, config, async_add_devices, discovery_info=None):
         [FireProtectionHUSensor(hass, name, county_id )],update_before_add=True)
 
 async def async_get_fdata(self):
-    fireprotection = [None] * 21
+    fireprotection = [None] * 20
     megye = "MEGYE_KOD_"
     tuzve = "NAPI_TUZVE"
 
-    url = 'http://tuzgyujtasitilalom.nebih.gov.hu/geoserver/nebih/wms?service=WMS&version=1.1.0&request=GetMap&layers=nebih:tuzgyujtas&styles=&bbox=384000.0,32000.0,960000.0,384000.0&width=768&height=469&srs=EPSG:23700&format=application%2Frss%2Bxml'
+    url = 'https://tuzgyujtasitilalom.nebih.gov.hu/geoserver/nebih/wms?service=WMS&version=1.1.0&request=GetMap&layers=nebih:tuzgyujtas&styles=&bbox=384000.0,32000.0,960000.0,384000.0&width=768&height=469&srs=EPSG:23700&format=application%2Frss%2Bxml'
     async with self._session.get(url) as response:
         rsp = await response.text()
 
@@ -57,7 +57,7 @@ async def async_get_fdata(self):
                .replace("</span></li>",""))
       if tuzve in line:
         if rcode != 0:
-          fireprotection[rcode] = int(line.replace("<li><strong><span class=\"atr-name\">NAPI_TUZVE</span>:</strong> <span class=\"atr-value\">","") \
+          fireprotection[rcode - 1] = int(line.replace("<li><strong><span class=\"atr-name\">NAPI_TUZVE</span>:</strong> <span class=\"atr-value\">","") \
                                   .replace("</span></li>",""))
           rcode = 0
     _LOGGER.debug(fireprotection)
@@ -71,7 +71,7 @@ class FireProtectionHUSensor(Entity):
         self._name = name
         self._county_id = county_id
         self._state = None
-        self._fdata = [None] * 21
+        self._fdata = [None] * 20
         self._icon = DEFAULT_ICON
         self._session = async_get_clientsession(hass)
 
@@ -79,6 +79,8 @@ class FireProtectionHUSensor(Entity):
     def extra_state_attributes(self):
         attr = {}
         attr["provider"] = CONF_ATTRIBUTION
+        attr["county_id"] = int(self._county_id)
+        attr["data"] = self._fdata
         return attr
 
     @asyncio.coroutine
@@ -87,7 +89,7 @@ class FireProtectionHUSensor(Entity):
         self._fdata = await async_get_fdata(self)
         _LOGGER.debug("county_id: " + self._county_id)
 
-        self._state = self._fdata[int(self._county_id)]
+        self._state = self._fdata[int(self._county_id) - 1]
         if self._state is not None and int(self._state) > 0:
           self._icon = "mdi:fire-alert"
         else:
