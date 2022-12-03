@@ -47,7 +47,8 @@ async def async_get_fdata(self):
     megye = "MEGYE_KOD_"
     tuzve = "NAPI_TUZVE"
 
-    url = 'http://tuzgyujtasitilalom.nebih.gov.hu/geoserver/nebih/wms?service=WMS&version=1.1.0&request=GetMap&layers=nebih:tuzgyujtas&styles=&bbox=384000.0,32000.0,960000.0,384000.0&width=768&height=469&srs=EPSG:23700&format=application%2Frss%2Bxml'
+    #url = 'http://tuzgyujtasitilalom.nebih.gov.hu/geoserver/nebih/wms?service=WMS&version=1.1.3&request=GetMap&layers=nebih:tuzgyujtas&styles=&bbox=384000.0,32000.0,960000.0,384000.0&width=768&height=469&srs=EPSG:23700&format=application%2Frss%2Bxml'
+    url = 'https://erdoterkep.nebih.gov.hu/geoserver/nebih/wms?service=WMS&version=1.1.0&request=GetMap&layers=nebih%3Atuzgyujtas&bbox=384000.0%2C32000.0%2C960000.0%2C384000.0&width=768&height=469&srs=EPSG%3A23700&styles=&format=rss'
     async with self._session.get(url) as response:
         rsp = await response.text()
 
