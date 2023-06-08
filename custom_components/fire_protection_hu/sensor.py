@@ -1,4 +1,3 @@
-import asyncio
 import json
 import logging
 import re
@@ -32,8 +31,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
 })
 
-@asyncio.coroutine
-def async_setup_platform(hass, config, async_add_devices, discovery_info=None):
+async def async_setup_platform(hass, config, async_add_devices, discovery_info=None):
     name = config.get(CONF_NAME)
     county_id = config.get(CONF_COUNTY)
     if int(county_id) > 20 or int(county_id) < 0:
@@ -82,7 +80,6 @@ class FireProtectionHUSensor(Entity):
         attr["provider"] = CONF_ATTRIBUTION
         return attr
 
-    @asyncio.coroutine
     async def async_update(self):
 
         self._fdata = await async_get_fdata(self)
