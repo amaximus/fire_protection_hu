@@ -22,7 +22,8 @@ Define sensor with the following configuration parameters:<br />
 | county_id | **Y** | `20` | county identifier |
 ---
 
-county_id is the serial value of the county when counties are sorted alphabetically (1: Baranya, 2: Bács-Kiskun;...; 19: Zala; 20: Budapest).
+county_id is the value from list (they could not sort it alphabetically):<br>
+1: Bács-Kiskun; 2: Baranya; 3: Békés; 4: Borsod-Abaúj-Zemplén; 5: Csongrád; 6: Fejér; 7: Győr-Moson-Sopron; 8: Hajdú-Bihar; 9: Heves; 10: Komárom-Esztergom; 11: Nógrád; 12: Pest; 13: Somogy; 14: Szabolcs-Szatmár-Bereg; 15: Jász-Bácskun-Szolnok; 16: Tolna; 17: Vas; 18: Veszprém; 19: Zala; 20: Budapest).
 
 ![Meteo alerts attributes](https://raw.githubusercontent.com/amaximus/fire_protection_hu/main/fire_protection_hu.png)
 

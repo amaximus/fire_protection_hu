@@ -1,4 +1,4 @@
-[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/custom-components/hacs)
+[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/hacs/integration)
 
 <p><a href="https://www.buymeacoffee.com/6rF5cQl" rel="nofollow" target="_blank"><img src="https://camo.githubusercontent.com/c070316e7fb193354999ef4c93df4bd8e21522fa/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76312e7376673f6c6162656c3d4275792532306d6525323061253230636f66666565266d6573736167653d25463025394625413525413826636f6c6f723d626c61636b266c6f676f3d6275792532306d6525323061253230636f66666565266c6f676f436f6c6f723d7768697465266c6162656c436f6c6f723d366634653337" alt="Buy me a coffee" data-canonical-src="https://img.shields.io/static/v1.svg?label=Buy%20me%20a%20coffee&amp;message=%F0%9F%A5%A8&amp;color=black&amp;logo=buy%20me%20a%20coffee&amp;logoColor=white&amp;labelColor=b0c4de" style="max-width:100%;"></a></p>
 
@@ -22,7 +22,8 @@ Define sensor with the following configuration parameters:<br />
 | county_id | **Y** | `20` | county identifier |
 ---
 
-county_id is the serial value of the county when counties are sorted alphabetically (1: Baranya, 2: Bács-Kiskun;...; 19: Zala; 20: Budapest).
+county_id is the value from list (they could not sort it alphabetically):<br>
+1: Bács-Kiskun; 2: Baranya; 3: Békés; 4: Borsod-Abaúj-Zemplén; 5: Csongrád; 6: Fejér; 7: Győr-Moson-Sopron; 8: Hajdú-Bihar; 9: Heves; 10: Komárom-Esztergom; 11: Nógrád; 12: Pest; 13: Somogy; 14: Szabolcs-Szatmár-Bereg; 15: Jász-Bácskun-Szolnok; 16: Tolna; 17: Vas; 18: Veszprém; 19: Zala; 20: Budapest).
 
 ![Meteo alerts attributes](https://raw.githubusercontent.com/amaximus/fire_protection_hu/main/fire_protection_hu.png)
 
